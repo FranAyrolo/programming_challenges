@@ -1,46 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-struct tupla {
-  int a, b;  
-};
-
-void mi_min(vector<int>, int, tupla &);
+#define loop(x,n) for(int x = 0; x < n; ++x)
+#define long_loop(x,n) for(long int x = 0L; x < n; ++x)
+#define it_loop(cont) for(auto it = cont.begin(); it != cont.end(); it++)
 
 int main(){
     //ios::sync_with_stdio(false);
-    //cin.tie(nullptr);
-    vector<int> costos;
-    
+    //cin.tie(nullptr);    
     int n, d, a, b, baja, alta;
-    scanf("%d %d", &n, &d);
-    scanf("%d %d", &a, &b);
+    set<pair<int, int>> costos;
+    vector<int> atendidos = {};
     
-    for (int i = 0; i < n; i++) {
-        scanf("%d %d", &baja, &alta);
-        costos.push_back(a * baja + b * alta);
+    cin >> n >> d >>  a >> b;
+    
+    loop (i, n) {
+        cin >> baja >> alta;
+        costos.insert({a*baja + b*alta, i+1});
     }
     
-    for (int i = 0; i < n; i++) {
-        printf("%d ", costos.at(i));
+    auto it_c = costos.begin();
+    while (d > 0 && it_c != costos.end()) {
+        if ((*it_c).first <= d) {
+            atendidos.push_back((*it_c).second);
+            d -= (*it_c).first;
+            it_c++;
+        }
+        else {
+            break;
+        }
     }
+    
+    cout << atendidos.size() << "\n";
+    it_loop(atendidos) {
+        cout << *it << " ";
+    }
+    cout << "\n";
     
     return 0;
 }
 
-
-
-
-void mi_min(vector<int> lista, int len, tupla & res) {
-    int min = INT_MAX;
-    int index = 0;
-    for (int i = 0; i < len; i++) {
-        if (lista.at(i) < min) {
-            min = lista.at(i);
-            index = i;
-        }
-    }
+/*
+while d > 0 and atendidos != len(costos):
+    cand, ind = mi_min(costos)
+    if cand <= d:
+        atendidos += 1
+        clientes_servidos.append(ind+1)
+        d -= cand
+        costos[ind] = INF
+    else:
+        break
     
-    res.a = min;
-    res.b = index;
-}
+print(atendidos)
+print(*clientes_servidos, sep = " ") 
+*/
