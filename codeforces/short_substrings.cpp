@@ -16,8 +16,8 @@ int main(){
         cases.push_back(temp);
     }
     
-    for (int i = 0; i < n_cases; i++) {
-        string current = cases.at(i);
+    for (auto it = cases.begin(); it < cases.end(); it++) {
+        string current = *it;
         string result = "";
         
         result += current[0];
@@ -31,8 +31,8 @@ int main(){
     }
     
     
-    for (int i = 0; i < n_cases; i++) {
-        cout << output.at(i) << "\n";
+    for (string out : output) {
+        cout << out << "\n";
     }
     
 	return 0;

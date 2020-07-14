@@ -2,13 +2,12 @@
 using namespace std;
  
 int main () {
-    
     int n;
-    cin >> n;
-    vector<string> wordlist;
-    //cout << typeid(n).name() << "\n";
-    
     string temp;
+    vector<string> wordlist;
+    
+    cin >> n;
+    
     for (int i = 0; i < n; i++) {
         cin >> temp;
         if (temp.length() > 10) {
