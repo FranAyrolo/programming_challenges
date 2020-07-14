@@ -38,18 +38,3 @@ int main(){
     
     return 0;
 }
-
-/*
-while d > 0 and atendidos != len(costos):
-    cand, ind = mi_min(costos)
-    if cand <= d:
-        atendidos += 1
-        clientes_servidos.append(ind+1)
-        d -= cand
-        costos[ind] = INF
-    else:
-        break
-    
-print(atendidos)
-print(*clientes_servidos, sep = " ") 
-*/
