@@ -8,7 +8,7 @@ int main(){
     //ios::sync_with_stdio(false);
     //cin.tie(nullptr);    
     int n, d, a, b, baja, alta;
-    set<pair<int, int>> costos;
+    multiset<pair<int, int>> costos;
     vector<int> atendidos = {};
     
     cin >> n >> d >>  a >> b;
